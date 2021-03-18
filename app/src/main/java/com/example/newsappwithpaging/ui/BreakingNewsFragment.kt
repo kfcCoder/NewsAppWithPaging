@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_breaking_news.*
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
     private val sharedViewModel by activityViewModels<NewsViewModel>()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,6 +48,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         pagingAadpter.setOnItemClickListener {
             Bundle().apply {
                 putSerializable("article", it)
+                //putParcelable("article", it)
                 findNavController().navigate(
                         R.id.action_breakingNewsFragment_to_articleFragment,this)
             }

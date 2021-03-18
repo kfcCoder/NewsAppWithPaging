@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsappwithpaging.R
@@ -81,6 +82,15 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news){
             pbPaginationSearchNews.isVisible = it.source.refresh is LoadState.Loading
         }
 
+        // handle click to ArticleFragment
+        pagingAadpter.setOnItemClickListener {
+            Bundle().apply {
+                putSerializable("article", it)
+                //putParcelable("article", it)
+                findNavController().navigate(
+                        R.id.action_searchNewsFragment_to_articleFragment,this)
+            }
+        }
     }
 
     // close keyboard

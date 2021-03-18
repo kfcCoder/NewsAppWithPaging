@@ -9,7 +9,10 @@ import com.example.newsappwithpaging.room.ArticleDataBase
 import kotlinx.coroutines.launch
 
 
-class NewsViewModel(application: Application) : AndroidViewModel(application) {
+class NewsViewModel(
+        application: Application,
+        state: SavedStateHandle
+) : AndroidViewModel(application) {
     /** get some instances */
     private val articleDao = ArticleDataBase.getDatabase(application).getArticleDao()
 

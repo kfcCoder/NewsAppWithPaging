@@ -40,6 +40,7 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
         newsAadpter.setOnItemClickListener {
             Bundle().apply {
                 putSerializable("article", it)
+                //putParcelable("article", it)
                 findNavController().navigate(
                         R.id.action_savedNewsFragment_to_articleFragment, this)
             }
